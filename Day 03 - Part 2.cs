@@ -1,4 +1,4 @@
-﻿int inputCount = File.ReadLines("Input.txt").Count();
+int inputCount = File.ReadLines("sxstest.txt").Count();
 int gearRatioSum = 0;
 string thisLine;
 string foundNumber = "";
@@ -8,7 +8,7 @@ List<PartNumber> partNumbers = new();
 
 for (int i = 0; i < inputCount; i++)
 {
-    thisLine = File.ReadLines("Input.txt").Skip(i).Take(1).First();
+    thisLine = File.ReadLines("sxstest.txt").Skip(i).Take(1).First();
     int indexStart = 0;
 
     for (int j = 0; j < thisLine.Length; j++)
@@ -34,8 +34,8 @@ int count = 1;
 foreach (Gear gear in gears)
 {
     Console.WriteLine($"{gear} #{count}:");
-    Console.WriteLine($"  X Position: {gear.Row + 1}");
-    Console.WriteLine($"  Y Position: {gear.Column + 1}");
+    Console.WriteLine($"  X Position: {gear.Column + 1}");
+    Console.WriteLine($"  Y Position: {gear.Row + 1}");
     gearRatioSum += gear.AdjacencyCheck(partNumbers);
     Console.WriteLine($"New Total: {gearRatioSum}");
     count++;
@@ -85,6 +85,6 @@ class PartNumber
         Number = number;
         Row = row;
         Column_Start = columnStart;
-        Column_End = columnEnd;
+        Column_End = columnEnd - 1;
     }
 }
